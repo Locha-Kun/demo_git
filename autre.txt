@@ -1,1 +1,6 @@
-fichier txt de qualité
+﻿fichier txt de qualité
+
+Bon finalement, je crois que j'ai remplis les conditions de l'activité meme si
+je voulais à la base faire l'activité de ruby avec les activités de github mais finalement...
+
+Allons y comme ça :)
