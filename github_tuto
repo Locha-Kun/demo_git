@@ -1,0 +1,28 @@
+git init dans le dossier cible.
+
+git add nom_fichier.extension
+(git add . -> pour selectionner tout les fichier)
+-------
+git commit -m "Ajouté commit ma checklist-vacances.md (woohoo!)" -> modifier un commit en envoyé en message (-m)
+-a -> mettre a jour.
+
+git commit -> enregistre modif
+-----
+git log -> affiche liste commit realisé ( plus recent au plus ancien) 
+Q pour quitter le log
+--------
+sha -> identifiant unique (ex:87753191cef0bdb955a4cb4ff841f7c2cce4cb1c)
+
+git checkout SHADuCommit -> trouver commit
+
+git checkout master -> retour branche principal.
+
+git reset --hard -> annuler avant commité
+
+-----------------
+
+git clone lienFourniParGitHub -> récuperer un repository sur github
+
+git push origin master -> envoyé modif sur github.
+
+git pull origin master -> récuperer les modif du repo github.
