@@ -1,0 +1,277 @@
+- irb -> ouvrir console ruby
+
+- puts "hello" -> say hello
+
+- Nil -> petite ligne qui retient un truk ( obejt variable)
+
+- pour vider le contenu de la console, il vous suffit de taper Ctrl + L sur votre clavier (c'est un raccourci pour la commande clear  de la console).  
+
+- pour quitter l'IRB, tapez exit dans votre console.
+
+
+/////////////////////////////////////////////////////////////
+
+                    ---- tableau  --
+
+mon_tableau = [1,5,20]
+
+mon_tableau.size -> affiche 3
+mon_tableau.reverse -> affiche [20,5,1]
+mon_tableau[2] -> affiche 20
+
+utilisateurs = ["alice", "bob", "john"]
+utisateurs << "marc" -> ajoute a la fin du tableau marc
+    
+---- hashes ----
+
+mon_hash = {alice: 10, bob: 20}
+mon_hash[:alice] -> affiche 10
+mon_hash[:marc] = 30 -> ajoute a la fin marc + son age
+    
+///////////////////////////////////////////////////////////////////
+        
+                    ---- boucle ----
+        
+    utilisateurs = ["alice", "bob", "john", "hector"]
+i = 0
+utilisateurs.each do |utilisateur|
+    puts i
+    i = i + 1
+    puts utilisateur
+end 
+////////////////               ////////             //////////////////
+    10.times do |i|         #  10 fois faire |param i|
+    puts "hello #{i}" # concatene grace au #, affiche hello 0 puis hello 1...
+    i.times do          # premierre fois i vaut 0 donc pas de world
+        puts "World"    # i vaut 1 puis 2... affiche une fois world puis 2 fois world...etc
+    end
+end
+///////////////////////////////////////////////////////////////////
+            ----condition ----
+    
+emails = [
+    "bob@bob.com", "jane@jane.com"
+    ]
+emails.each do |email|
+    puts email
+    if email == "bob@bob.com"
+        puts "bonjour bob"
+    else
+        puts "vousn'etes pas bob"
+    end
+end
+
+///////////////////////////////////////////////////////////////////////
+    ----- condition ----
+    
+a = 9
+if (a == 12 || a == 10) && a != "hello"
+    puts "okey"
+end
+
+----- booleen ----
+
+a = 15
+mon_booleen = ( a > 10)
+puts mon_booleen
+if mon_booleen
+    puts "okey !"
+end
+////////////////////////////////////////////////////////////
+---- defi time -----
+    n 2
+voyages = [
+    { ville: "Paris", duree: 10 },
+    { ville: "New York", duree: 5 },
+    { ville: "Berlin", duree: 2 },
+    { ville: "Montréal", duree: 15 }
+]
+
+puts "defi 2 - si j'étais en vacance'"
+
+voyages.each do |voyage |
+    puts " voyage à #{voyage[:ville]} de #{voyage[:duree]} jours"
+end
+        
+puts " défi 3, finalement j'ai pas assez de temps"
+
+voyages.each do |voyage|
+    if voyage[:duree] < 6
+    puts " voyage à #{voyage[:ville]} de #{voyage[:duree]} jours"
+     else puts " je ne vais pas #{voyage[:ville]} "
+end
+end
+        
+/////////////////////////////////////////////
+    ------------------- class --------------
+class Utilisateur
+    attr_accessor :prenom, :nom
+end 
+class PostSurUnBlog
+    attr_accessor :titre, :contenu, :auteur
+end 
+class Email
+    attr_accessor :email
+end 
+
+bob = Utilisateur.new
+bob.prenom = "bob"
+bob.nom = "lenon"
+
+puts bob.prenom + " " + bob.nom
+
+jane = Utilisateur.new
+jane.prenom = "jane"
+jane.nom = "lenon"
+
+puts jane.prenom + " " + jane.nom
+         ------------------- méthode sans parametre --------------
+class Utilisateur
+attr_accessor :prenom, :nom
+    
+    def nom_complet
+        prenom + " " + nom
+    end 
+end
+
+bob = Utilisateur.new
+bob.prenom = "bob"
+bob.nom = "lenon"
+
+puts bob.nom_complet
+        
+             ------------------- méthode avec parametre --------------
+
+class Utilisateur
+    attr_accessor :prenom, :nom, :pays
+    
+    def nom_complet
+        prenom + " " + nom
+    end 
+    
+    def habite_en(valeur)
+        valeur == pays
+    end
+end
+
+bob = Utilisateur.new
+bob.prenom = "bob"
+bob.nom = "lenon"
+bob.pays = "France"
+
+if bob.habite_en("Suisse")
+    puts "bonjour cher ami suisse"
+else 
+    puts "tu n'es pas Suisse"
+end
+        //////////////////////////////////
+        
+     ------------------- TP --------------
+ class Utilisateur 
+    attr_accessor :nom, :amis
+    def est_amis_avec? (nom)
+        puts " On va tester si amis avec " + nom
+        amis.each do |ami|
+            puts "on test sur " + ami.nom
+            return true if ami.nom == nom
+        end
+        return false
+    end
+end
+
+alice = Utilisateur.new
+alice.nom = "Alice"
+bob = Utilisateur.new
+bob.nom = "Bob"
+jane = Utilisateur.new
+jane.nom = "Jane"
+
+alice.amis = [jane, bob]
+puts alice.est_amis_avec?("Bob")
+ ------------------- TP - Initialize -------------
+class Utilisateur 
+    attr_accessor :prenom
+     
+    def initialize(prenom, sexe)
+        if sexe == "f"
+            @prenom = "Madame " + prenom
+        else 
+            @prenom = "Monsieur " + prenom
+        end
+    end
+   
+end
+
+alice = Utilisateur.new("Alice", "f")
+bob = Utilisateur.new("Bob", "h")
+puts alice.prenom
+puts bob.prenom
+        
+------------------- Heritage -------------        
+
+class Animal
+  attr_accessor :nom
+  
+  def initialize(nom)
+    @nom = nom
+  end
+end
+
+class Chat < Animal
+    def parler
+    puts "#{nom}: Miaou !"
+    end
+end
+
+class Chien < Animal
+    def parler
+    puts "#{nom}: Wouaf !"
+    end
+end
+
+class Oiseau < Animal
+    def parler
+    puts "#{nom}: Cui cui !"
+     end
+end
+
+mon_chien = Chien.new("Bob le chien")
+mon_chat = Chat.new("Adeline le chat")
+mon_oiseau = Oiseau.new("Toto l'oiseau")
+
+mon_chat.parler
+mon_chien.parler
+mon_oiseau.parler
+        
+------------------- Composer Objet -------------         
+class Eleve
+  attr_accessor :nom, :examens
+    def moyenne
+        total = 0
+        examens.each do |examen|
+            total += examen.note
+        end
+        total / examens.size
+    end
+end
+
+class Examen
+  attr_accessor :nom, :note,
+  
+  def initialize(nom,note)
+    @nom = nom
+    @note = note
+  end
+end
+
+mon_eleve = Eleve.new
+mon_eleve.nom = "Billy"
+
+maths = Examen.new("maths", 10.0)
+philo = Examen.new("philo", 15.0)
+
+
+puts "============================="
+
+mon_eleve.examens = [maths, philo]
+puts mon_eleve.moyenne
